@@ -15,7 +15,6 @@ public class MainQueue {
         queue.dequeue();
         
         queue.enqueue(1);
-        queue.enqueue(2);
         queue.enqueue(3);
         
         queue.print();
@@ -33,6 +32,10 @@ public class MainQueue {
         queue.print();
         
         queue.dequeue();
+        
+        queue.enqueue(5);
+        
+        queue.print();
 
     }
 }

@@ -17,7 +17,11 @@ public class Queue {
         this.data = new int[queueSize];
     }
 
-    public boolean isFull(){ return (last - top) == queueSize - 1; }
+    public boolean isFull(){
+        if (last > top)
+            return (last - top) == queueSize - 1;
+        return (top - last) == queueSize - 1;
+    }
 
     public boolean isEmpty(){ return last == -1; }
 
@@ -25,7 +29,10 @@ public class Queue {
         if (isFull())
             System.out.println("Full queue");
         else if (last != -1){
-            last++;
+            if (last != queueSize - 1)
+                last++;
+            else
+                last=0;
             data[last] = value;
         }
         else {
@@ -45,7 +52,10 @@ public class Queue {
             last = -1;
         }
         else {
-            top++;
+            if (top != queueSize - 1)
+                top++;
+            else
+                top = 0;
         }
     }
 
@@ -54,9 +64,18 @@ public class Queue {
         if (isEmpty())
             System.out.println("Empty queue");
         else{
-            for (int i = top; i <= last; i++) {
-                System.out.println(data[i]);
-            }
+            //Separated Intervals ( top --- ,  ---- last)
+            if (top > last)
+                for (int i = 0; i <= queueSize - 1; i++) {
+                    if (i >= top || i <= last)
+                        System.out.println(data[i]);
+                }
+            //Joined Intervals (top ---- last)
+            else
+                for (int i = 0; i <= queueSize - 1; i++) {
+                    if (i >= top && i <= last)
+                        System.out.println(data[i]);
+                }
         }
     }
 }
