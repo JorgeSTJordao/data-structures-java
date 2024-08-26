@@ -1,71 +1,77 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package datastructure1.nodes_list;
 
-import java.util.Scanner;
-
-/**
- *
- * @author jorge
- */
 public class NodesList {
-    private Node list;
-
+  private Node Lista;
+    
     public NodesList(){
-        list = null;
+        this.Lista = null;
     }
 
-    public void allOperations(){
-        while (true){
-            System.out.print("1 - Insert\n");
-            System.out.print("2 - Delete\n");
-            System.out.print("0 - Stop\n");
-
-            Scanner input = new Scanner(System.in);
-
-            int number = input.nextInt();
-
-            switch (number) {
-                case 1 -> {
-                    addList();
-                    printList();
-                    break;
-                }
-                case 2 -> {
-                    deleteList();
-                    printList();
-                    break;
-                }
-                default -> 
-                    printList();
-            } 
-            if (number == 0)
-                break;
+    //Inserindo elementos
+    public void inserir (int informacao){
+        //Declarando nosso novo nó
+        Node no = new Node();
+        
+        no.setInformacao(informacao);
+        if(Lista == null){
+            Lista=no;
+        }
+        else{
+           //Aqui se cria um apontador para a lista.
+        Node atual =Lista;
+        while(atual.getProximo()!=null){
+            atual = atual.getProximo();
+        }
+        atual.setProximo(no);
         }
     }
     
-    public void addList(){
-        if (list != null)
-            list = list.addNode();
-        else 
-            list = new Node().addNode();
+    //Deletando elementos
+    public void deletar (int posicao){
+                
+        //Condição de parada: o último elemento sempre tem o próximo nó nulo
+        if (Lista == null){
+            System.out.println("Lista vazia!");
+        }
+        else {
+            int posicaoAtual = 1;
+            Node atual = Lista;
+            Node anterior = null;
+
+            while (true){
+                
+                if (posicaoAtual == posicao){
+                    if (anterior != null && atual.getProximo() != null){
+                        Node proximo = atual.getProximo();
+                        anterior.setProximo(proximo);
+                        break;
+                    }
+                    else if (anterior == null){
+                        Lista = atual.getProximo();
+                        break;
+                    }
+                    anterior.setProximo(null);
+                    break;
+                }
+                else if (atual.getProximo() == null){
+                    System.out.println("Posição inexistente!");
+                    break;
+                }
+                posicaoAtual++;
+                anterior = atual;
+                atual = atual.getProximo();
+            }
+        }
     }
     
-    public void deleteList(){
-        System.out.print("Type the node number u'd like remove: ");
-        Scanner input = new Scanner(System.in);
-
-        int indexChosen = input.nextInt();
-        
-        if (indexChosen == 1)
-            list = list.deleteFirst();
-        else
-            list.deleteAny(indexChosen, 1, list);
-    }
-
-    public void printList(){
-        list.print();
+    //Imprimindo elementos 
+    public void imprime(){
+        Node atual = Lista;
+    while (atual != null) {
+            System.out.print(atual.getInformacao()+ " -> ");
+            atual= atual.getProximo();
+        }
+        System.out.println("Acabou");
+  
     }
 }
