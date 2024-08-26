@@ -1,6 +1,6 @@
 package datastructure1;
 
-import datastructure1.circular_linked.MainCircularLinked;
+import datastructure1.doubly_list.MainDoublyList;
 
 
 public class DataStructure1 {
@@ -9,8 +9,8 @@ public class DataStructure1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MainCircularLinked mainCircularLinked = new MainCircularLinked();
-        mainCircularLinked.execute();
+        MainDoublyList mainoublyList = new MainDoublyList();
+        mainoublyList.execute();
     }
     
 }
