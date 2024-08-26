@@ -1,58 +1,39 @@
 package datastructure1.doubly_list;
 
-import java.util.Scanner;
-
 public class NodeDoublyList {
-    private Integer info;   
-    NodeDoublyList preview;
-    NodeDoublyList next;
+    private Integer informacao;
+    private NodeDoublyList anterior;
+    private NodeDoublyList proximo;
+    
+    public NodeDoublyList()
+    {
+        this.informacao = null;
+        this.anterior = null;
+        this.proximo = null;
+    }
 
-    public NodeDoublyList(NodeDoublyList preview){
-        info = null;
-        this.preview = preview;
-        next = null;
+    public Integer getInformacao() {
+        return informacao;
+    }
+
+    public void setInformacao(Integer informacao) {
+        this.informacao = informacao;
+    }
+
+    public NodeDoublyList getAnterior() {
+        return anterior;
+    }
+
+    public void setAnterior(NodeDoublyList anterior) {
+        this.anterior = anterior;
     }
     
-    
-     public Boolean isNull(){
-        return next == null;
+    public NodeDoublyList getProximo() {
+        return proximo;
     }
 
-    public NodeDoublyList addNode(){
-        System.out.print("Type the next value: ");
-        Scanner input = new Scanner(System.in);
-
-        int number = input.nextInt();
-
-        info = number;
-        next = new NodeDoublyList(this);    
-        
-        return this ;
-    }
-   
-   
-    public NodeDoublyList deleteNode(Integer index, Integer actual, NodeDoublyList nodePreview){
-        if (isNull()){
-            System.out.println("Index does not exist");
-            return this;
-        }
-        else if (index == actual){
-           
-           nodePreview.next = next;
-           next.preview = nodePreview;
-           return nodePreview;
-        }
-        
-        actual++;
-        return next.deleteNode(index, actual, this);
-    }
-
-    public void print(){
-        
-        if (next != null) {
-            System.out.println("Value: " + this.info);
-            next.print();
-        }    
+    public void setProximo(NodeDoublyList proximo) {
+        this.proximo = proximo;
     }
      
 }

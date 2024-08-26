@@ -1,7 +1,7 @@
 package datastructure1.nodes_list;
 
 public class NodesList {
-  private Node Lista;
+    private Node Lista;
     
     public NodesList(){
         this.Lista = null;

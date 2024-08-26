@@ -1,7 +1,6 @@
 package datastructure1;
 
-import datastructure1.nodes_list.MainNodesList;
-
+import datastructure1.doubly_list.MainDoublyList;
 
 public class DataStructure1 {
 
@@ -9,8 +8,8 @@ public class DataStructure1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MainNodesList mainNodesList = new MainNodesList();
-        mainNodesList.execute();
+        MainDoublyList mainDoublyList = new MainDoublyList();
+        mainDoublyList.execute();
     }
     
 }

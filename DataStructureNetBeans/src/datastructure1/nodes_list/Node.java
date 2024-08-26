@@ -1,7 +1,7 @@
 package datastructure1.nodes_list;
 
 public class Node {
-     private Integer informacao;
+    private Integer informacao;
     private Node proximo;
     
     public Node()
